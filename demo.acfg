@@ -1,0 +1,32 @@
+{
+  "model": "demo",
+  "runtime": "live",
+  "runtime_configs": {
+    "mbed_bm": {
+      "target": "BLUE_PILL",
+      "flash_command": "st-flash --reset --flash=128k write _BIN_FILE_ 0x8000000",
+      "dl_mbed": "https://api.github.com/repos/ARMmbed/mbed-os/tarball/mbed-os-6.16.0",
+      "dl_toolchain": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2",
+      "serial_port": "/dev/ttyACM0",
+      "serial_baudrate": "115200",
+      "serial_pin_tx": "CONSOLE_TX",
+      "serial_pin_rx": "CONSOLE_RX",
+      "use_usb": false,
+      "usb_device_num": "0",
+      "lto": false,
+      "skip": false,
+      "select1": "763.2",
+      "select2": "asdffff"
+    },
+    "live": {
+      "cpp_flags": "-std=c++17 -g",
+      "ld_flags": "-g",
+      "inc_path": [
+      ],
+      "ld_path": [
+      ],
+      "libs": [
+      ]
+    }
+  }
+}

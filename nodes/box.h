@@ -1,0 +1,37 @@
+#ifndef DISPLAY_DEMO_BOX_H
+#define DISPLAY_DEMO_BOX_H DISPLAY_DEMO_BOX_H
+
+namespace display_demo{
+
+const unsigned char border_round_4_full[] = {
+  0x0c, 0x0e, 0x0f, 0x0f
+};
+
+const unsigned char border_round_4[] = {
+  0x0c, 0x02, 0x01, 0x01
+};
+
+const unsigned char border_round_6_full[] = {
+  0x30, 0x3c, 0x3e, 0x3e, 0x3f, 0x3f
+};
+
+const unsigned char border_round_6[] = {
+  0x30, 0x1c, 0x06, 0x02, 0x03, 0x01
+};
+
+const unsigned char border_round_8_full[] = {
+  0xe0, 0xf8, 0xfc, 0xfe, 0xfe, 0xff, 0xff, 0xff
+};
+
+const unsigned char border_round_8[] = {
+  0xe0, 0x38, 0x0c, 0x06, 0x02, 0x03, 0x01, 0x01
+};
+
+struct box{
+      
+};
+
+
+} // namespace display_demo
+
+#endif // DISPLAY_DEMO_BOX_H

@@ -1,0 +1,35 @@
+{
+  "model": "mbed",
+  "runtime": "mbed_bm",
+  "runtime_configs": {
+    "mbed_bm": {
+      "target": "BLUE_PILL",
+      "flash_command": "pyocd flash _ELF_FILE_ -t stm32f103rc -e chip -M halt",
+      "dl_mbed": "https://api.github.com/repos/ARMmbed/mbed-os/tarball/mbed-os-6.16.0",
+      "dl_toolchain": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2",
+      "serial_port": "/dev/ttyACM0",
+      "serial_baudrate": "115200",
+      "serial_pin_tx": "PB_10",
+      "serial_pin_rx": "PB_11",
+      "use_usb": false,
+      "usb_device_num": "0",
+      "lto": true,
+      "skip": false
+    },
+    "mbed": {
+      "target": "BLUE_PILL",
+      "flash_command": "pyocd flash _ELF_FILE_ -t stm32f103rc -e chip",
+      "dl_mbed": "https://api.github.com/repos/ARMmbed/mbed-os/tarball/mbed-os-6.17.0",
+      "dl_toolchain": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2",
+      "raster_stack_size": "800",
+      "serial_port": "/dev/ttyACM0",
+      "serial_baudrate": "115200",
+      "serial_pin_tx": "PB_10",
+      "serial_pin_rx": "PB_11",
+      "use_usb": false,
+      "usb_device_num": "0",
+      "lto": true,
+      "skip": false
+    }
+  }
+}

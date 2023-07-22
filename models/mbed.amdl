@@ -1,0 +1,399 @@
+{
+  "model_is_node": false,
+  "nodes": [
+    {
+      "name": "counter",
+      "type": "class",
+      "cfg": {
+        "class": "counter",
+        "prj": "math",
+        "start": "0",
+        "end": "1",
+        "step": "1",
+        "auto_restart": true
+      },
+      "pos": {
+        "x": -367,
+        "y": -250
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "gpio_output",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_output",
+        "prj": "mbed_nodes",
+        "pin": "PC_13"
+      },
+      "pos": {
+        "x": 250,
+        "y": -248
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "counter",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    },
+    {
+      "name": "spi",
+      "type": "class",
+      "cfg": {
+        "class": "spi",
+        "prj": "mbed_nodes",
+        "baudrate": "36000000",
+        "pin_mosi": "PB_5",
+        "pin_miso": "PB_4",
+        "pin_sck": "PB_3",
+        "mode": "0"
+      },
+      "pos": {
+        "x": -363,
+        "y": 56
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "cs",
+      "type": "class",
+      "cfg": {
+        "class": "opin",
+        "prj": "mbed_nodes",
+        "pin": "PA_15"
+      },
+      "pos": {
+        "x": -351,
+        "y": 157
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "busy",
+      "type": "class",
+      "cfg": {
+        "class": "ipin",
+        "prj": "mbed_nodes",
+        "pin": "PB_7"
+      },
+      "pos": {
+        "x": -381,
+        "y": 538
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "dc",
+      "type": "class",
+      "cfg": {
+        "class": "opin",
+        "prj": "mbed_nodes",
+        "pin": "PB_6"
+      },
+      "pos": {
+        "x": -353,
+        "y": 282
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "reset",
+      "type": "class",
+      "cfg": {
+        "class": "opin",
+        "prj": "mbed_nodes",
+        "pin": "PB_12"
+      },
+      "pos": {
+        "x": -387,
+        "y": 413
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "display",
+      "type": "base",
+      "cfg": {
+        "node": "reference",
+        "mdl": "display",
+        "prj": "display_demo"
+      },
+      "pos": {
+        "x": -696,
+        "y": -25
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "btn_fwd": {
+          "node": "btn3",
+          "pin": "out"
+        },
+        "btn_enter": {
+          "node": "btn2",
+          "pin": "out"
+        },
+        "btn_bwd": {
+          "node": "btn1",
+          "pin": "out"
+        },
+        "bat": {
+          "node": "expression",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "btn_fwd": "",
+        "btn_enter": "",
+        "btn_bwd": "",
+        "bat": ""
+      }
+    },
+    {
+      "name": "compile_display",
+      "type": "class",
+      "cfg": {
+        "class": "compile_display",
+        "prj": "display_demo"
+      },
+      "pos": {
+        "x": -747,
+        "y": -137
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "mbed_meminfo",
+      "type": "class",
+      "cfg": {
+        "class": "mbed_meminfo",
+        "prj": "mbed_nodes"
+      },
+      "pos": {
+        "x": -1472,
+        "y": 658
+      },
+      "rotate": false,
+      "comment_out": true,
+      "raster": "1s"
+    },
+    {
+      "name": "enable_keyboard",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_output",
+        "prj": "mbed_nodes",
+        "pin": "PC_14"
+      },
+      "pos": {
+        "x": -1486,
+        "y": 525
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms",
+      "default_values": {
+        "in": "true"
+      }
+    },
+    {
+      "name": "btn2",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_input",
+        "prj": "mbed_nodes",
+        "pin": "PC_15",
+        "pull_down": true,
+        "pull_up": false,
+        "pull_none": false,
+        "pull_open": false
+      },
+      "pos": {
+        "x": -1494,
+        "y": 57
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "btn1",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_input",
+        "prj": "mbed_nodes",
+        "pin": "PA_0",
+        "pull_down": true,
+        "pull_up": false,
+        "pull_none": false,
+        "pull_open": false
+      },
+      "pos": {
+        "x": -1494,
+        "y": 194
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "btn4",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_input",
+        "prj": "mbed_nodes",
+        "pin": "PA_1",
+        "pull_down": true,
+        "pull_up": false,
+        "pull_none": false,
+        "pull_open": false
+      },
+      "pos": {
+        "x": -1492,
+        "y": 327
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "btn3",
+      "type": "class",
+      "cfg": {
+        "class": "gpio_input",
+        "prj": "mbed_nodes",
+        "pin": "PA_2",
+        "pull_down": true,
+        "pull_up": false,
+        "pull_none": false,
+        "pull_open": false
+      },
+      "pos": {
+        "x": -1495,
+        "y": -81
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "expression",
+      "type": "expression",
+      "cfg": {
+        "function": "a*100",
+        "output_name": "out",
+        "output_type": "auto",
+        "type_header": "",
+        "disable_output": false
+      },
+      "pos": {
+        "x": -937,
+        "y": 269
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "a": {
+          "node": "pt2",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "a": ""
+      }
+    },
+    {
+      "name": "pt2",
+      "type": "class",
+      "cfg": {
+        "class": "pt2",
+        "prj": "control",
+        "t": "4",
+        "d": "1",
+        "init_with_first_input": true,
+        "initial_value": "0",
+        "initial_value_derivative": "0"
+      },
+      "pos": {
+        "x": -1174,
+        "y": 304
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "btn4",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": "0"
+      }
+    },
+    {
+      "name": "epd154",
+      "type": "class",
+      "cfg": {
+        "class": "epd154",
+        "prj": "display_demo",
+        "swap_endian": true,
+        "invert_px": true
+      },
+      "pos": {
+        "x": 276,
+        "y": -37
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "img": {
+          "node": "display",
+          "pin": "img"
+        },
+        "spi": {
+          "node": "spi",
+          "pin": "spi_bus"
+        },
+        "cs": {
+          "node": "cs",
+          "pin": "opin"
+        },
+        "dc": {
+          "node": "dc",
+          "pin": "opin"
+        },
+        "reset": {
+          "node": "reset",
+          "pin": "opin"
+        },
+        "busy": {
+          "node": "busy",
+          "pin": "ipin"
+        }
+      },
+      "default_values": {
+        "img": "",
+        "spi": "",
+        "cs": "",
+        "dc": "",
+        "reset": "",
+        "busy": ""
+      }
+    }
+  ]
+}

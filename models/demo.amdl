@@ -1,0 +1,123 @@
+{
+  "model_is_node": false,
+  "nodes": [
+    {
+      "name": "btn_fwd",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "int",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -760,
+        "y": -20
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "100ms"
+    },
+    {
+      "name": "btn_bwd",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "int",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -773,
+        "y": 214
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "btn_enter",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "int",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -783,
+        "y": 94
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "display",
+      "type": "base",
+      "cfg": {
+        "node": "reference",
+        "mdl": "display",
+        "prj": "display_demo"
+      },
+      "pos": {
+        "x": -137,
+        "y": 128
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "btn_fwd": {
+          "node": "btn_fwd",
+          "pin": "value"
+        },
+        "btn_enter": {
+          "node": "btn_enter",
+          "pin": "value"
+        },
+        "btn_bwd": {
+          "node": "btn_bwd",
+          "pin": "value"
+        },
+        "bat": {
+          "node": "bat",
+          "pin": "value"
+        }
+      },
+      "default_values": {
+        "btn_fwd": "",
+        "btn_enter": "",
+        "btn_bwd": "",
+        "bat": ""
+      }
+    },
+    {
+      "name": "bat",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -701,
+        "y": 326
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "compile_display",
+      "type": "class",
+      "cfg": {
+        "class": "compile_display",
+        "prj": "display_demo"
+      },
+      "pos": {
+        "x": -186,
+        "y": -64
+      },
+      "rotate": false,
+      "comment_out": false
+    }
+  ]
+}

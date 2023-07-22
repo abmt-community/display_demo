@@ -1,0 +1,93 @@
+{
+  "type": "list",
+  "elements": [
+    {
+      "type": "image",
+      "scale": false,
+      "signal": "display.img",
+      "width": 1433,
+      "height": 486
+    },
+    {
+      "type": "list_hz",
+      "elements": [
+        {
+          "type": "input_num",
+          "param": "btn_bwd",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "btn_val": 1,
+          "show_input": false,
+          "show_range": false,
+          "show_btn": true,
+          "width": 413.55794330916297,
+          "height": 25
+        },
+        {
+          "type": "input_num",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "btn_val": 1,
+          "show_input": false,
+          "show_range": false,
+          "show_btn": true,
+          "width": 404.4355400696864,
+          "height": 25,
+          "param": "btn_enter"
+        },
+        {
+          "type": "input_num",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "btn_val": 1,
+          "show_input": false,
+          "show_range": false,
+          "show_btn": true,
+          "width": 349.51219512195104,
+          "height": 25,
+          "param": "btn_fwd"
+        }
+      ],
+      "width": 1433,
+      "height": 25
+    },
+    {
+      "type": "input_num",
+      "param": "bat",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1433,
+      "height": 20
+    },
+    {
+      "signals": [
+        "display.edge_detect_1.in",
+        "display.edge_detect_2.in"
+      ],
+      "type": "scope",
+      "time_range": 10,
+      "y_max": "100",
+      "y_min": "0",
+      "width": 1433,
+      "height": 150
+    },
+    {
+      "type": "display",
+      "display_name": true,
+      "num_digets": "3",
+      "signal": "display.state_machine.state",
+      "width": 1433,
+      "height": 25
+    }
+  ],
+  "width": 1433,
+  "height": 852
+}

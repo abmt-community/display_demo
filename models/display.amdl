@@ -1,0 +1,493 @@
+{
+  "model_is_node": true,
+  "nodes": [
+    {
+      "name": "btn_fwd",
+      "type": "base",
+      "cfg": {
+        "node": "input",
+        "name": "in"
+      },
+      "pos": {
+        "x": -1190,
+        "y": -480
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "btn_enter",
+      "type": "base",
+      "cfg": {
+        "node": "input",
+        "name": "value_1"
+      },
+      "pos": {
+        "x": -1206,
+        "y": -360
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "btn_bwd",
+      "type": "base",
+      "cfg": {
+        "node": "input",
+        "name": "value_2"
+      },
+      "pos": {
+        "x": -1197,
+        "y": -233
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "state_machine",
+      "type": "state_machine",
+      "cfg": {
+        "vars": "display_demo::display disp;\nabmt::img_bw out_img;\nbool in_fwd;\nbool in_enter;\nbool in_bwd;\nuint32_t in_bat;\nstd::vector<std::string> console_lines;\nuint32_t out = 50;\nuint32_t out_interval = 10;",
+        "includes": [
+          "vector",
+          "string",
+          "../ws/display_demo/nodes/display.h"
+        ],
+        "namespaces": [
+          "std",
+          "std::chrono_literals"
+        ],
+        "state_as_string_view": false,
+        "states": [
+          {
+            "pos": {
+              "x": -57,
+              "y": -13
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "init",
+            "init": "out_img = disp.img;",
+            "tick": "",
+            "final": "",
+            "transitions": [
+              {
+                "c": "true",
+                "t": "console"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 289,
+              "y": -14
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "console",
+            "init": "disp.status_text = \"Console\";\nconsole_lines.clear();\nconsole_lines.push_back(\"console_init\");",
+            "tick": "disp.battery = in_bat;\nif(in_enter){\n    console_lines.push_back(\"enter event\");\n}\nstd::string lines;\nfor(auto l:console_lines){\n    lines += l + \"\\n\";\n}\ndisp.screen_text(lines);",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_fwd",
+                "t": "enter_menu"
+              },
+              {
+                "c": "in_bwd",
+                "t": "special_font"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 288,
+              "y": 193
+            },
+            "rotate": true,
+            "comment_out": false,
+            "name": "enter_menu",
+            "init": "disp.status_text = \"Menu\";",
+            "tick": "disp.battery = in_bat;\n\ndisp.screen_text(\"Press enter for menu...\");",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_bwd",
+                "t": "console"
+              },
+              {
+                "c": "in_fwd",
+                "t": "large_icons"
+              },
+              {
+                "c": "in_enter",
+                "t": "menu_back"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 288,
+              "y": 395
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "large_icons",
+            "init": "disp.status_text = \"Icon\";\ndisp.display_play = false;",
+            "tick": "disp.battery = in_bat;\ndisp.screen_icon();\n\n",
+            "final": "disp.display_play = true;",
+            "transitions": [
+              {
+                "c": "in_fwd",
+                "t": "special_font"
+              },
+              {
+                "c": "in_bwd",
+                "t": "enter_menu"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 290,
+              "y": 573
+            },
+            "rotate": true,
+            "comment_out": false,
+            "name": "special_font",
+            "init": "disp.status_text = \"Font test\";\ndisp.display_play = false;",
+            "tick": "disp.battery = in_bat;\ndisp.screen_test_font();",
+            "final": "disp.display_play = true;",
+            "transitions": [
+              {
+                "c": "in_bwd",
+                "t": "large_icons"
+              },
+              {
+                "c": "in_fwd",
+                "t": "console"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 993,
+              "y": 300
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "menu_back",
+            "init": "disp.selected_menu_element = display_demo::display::BACK;\ndisp.out = out;\ndisp.interval = out_interval;",
+            "tick": "disp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_enter",
+                "t": "enter_menu"
+              },
+              {
+                "c": "in_fwd",
+                "t": "menu_set_out"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 951,
+              "y": 468
+            },
+            "rotate": true,
+            "comment_out": false,
+            "name": "menu_set_out",
+            "init": "disp.selected_menu_element = display_demo::display::SET_OUT;",
+            "tick": "disp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_bwd",
+                "t": "menu_back"
+              },
+              {
+                "c": "in_fwd",
+                "t": "menu_set_intervall"
+              },
+              {
+                "c": "in_enter",
+                "t": "input_out"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 935,
+              "y": 659
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "menu_set_intervall",
+            "init": "disp.selected_menu_element = display_demo::display::SET_INT;",
+            "tick": "disp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_bwd",
+                "t": "menu_set_out"
+              },
+              {
+                "c": "in_fwd",
+                "t": "menu_reset_values"
+              },
+              {
+                "c": "in_enter",
+                "t": "input_interval"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 1560,
+              "y": 827
+            },
+            "rotate": true,
+            "comment_out": false,
+            "name": "input_interval",
+            "init": "disp.selected_menu_element = display_demo::display::INP_INT;",
+            "tick": "if(in_fwd && out_interval < 100){\n    out_interval += 10;\n}\nif(in_bwd && out_interval >= 10){\n    out_interval -= 10;\n}\ndisp.interval = out_interval;\ndisp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_enter",
+                "t": "menu_set_intervall"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 1550,
+              "y": 594
+            },
+            "rotate": false,
+            "comment_out": false,
+            "name": "input_out",
+            "init": "disp.selected_menu_element = display_demo::display::INP_OUT;",
+            "tick": "if(in_fwd && out < 100){\n    out += 10;\n}\nif(in_bwd && out >= 10){\n    out -= 10;\n}\ndisp.out = out;\ndisp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_enter",
+                "t": "menu_set_out"
+              }
+            ]
+          },
+          {
+            "pos": {
+              "x": 945,
+              "y": 893
+            },
+            "rotate": true,
+            "comment_out": false,
+            "name": "menu_reset_values",
+            "init": "disp.selected_menu_element = display_demo::display::RESET;",
+            "tick": "if(in_enter){\n    out = 50;\n    out_interval = 10;\n}\ndisp.interval = out_interval;\ndisp.out = out;\ndisp.battery = in_bat;\ndisp.screen_menu();",
+            "final": "",
+            "transitions": [
+              {
+                "c": "in_bwd",
+                "t": "menu_set_intervall"
+              }
+            ]
+          }
+        ],
+        "sources": []
+      },
+      "pos": {
+        "x": -374,
+        "y": -348
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "fwd": {
+          "node": "edge_detect_1",
+          "pin": "out"
+        },
+        "enter": {
+          "node": "edge_detect_2",
+          "pin": "out"
+        },
+        "bwd": {
+          "node": "edge_detect_3",
+          "pin": "out"
+        },
+        "bat": {
+          "node": "bat",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "fwd": "",
+        "enter": "",
+        "bwd": "",
+        "bat": ""
+      }
+    },
+    {
+      "name": "edge_detect_1",
+      "type": "class",
+      "cfg": {
+        "class": "edge_detect",
+        "prj": "control",
+        "rising": true,
+        "falling": false
+      },
+      "pos": {
+        "x": -916,
+        "y": -479
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "btn_fwd",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": "0"
+      }
+    },
+    {
+      "name": "edge_detect_2",
+      "type": "class",
+      "cfg": {
+        "class": "edge_detect",
+        "prj": "control",
+        "rising": true,
+        "falling": false
+      },
+      "pos": {
+        "x": -911,
+        "y": -360
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "btn_enter",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": "0"
+      }
+    },
+    {
+      "name": "edge_detect_3",
+      "type": "class",
+      "cfg": {
+        "class": "edge_detect",
+        "prj": "control",
+        "rising": true,
+        "falling": false
+      },
+      "pos": {
+        "x": -911,
+        "y": -231
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "btn_bwd",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": "0"
+      }
+    },
+    {
+      "name": "bat",
+      "type": "base",
+      "cfg": {
+        "node": "input",
+        "name": "value_2"
+      },
+      "pos": {
+        "x": -756,
+        "y": -54
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "img",
+      "type": "base",
+      "cfg": {
+        "node": "output",
+        "name": "output"
+      },
+      "pos": {
+        "x": 317,
+        "y": -399
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "state_machine",
+          "pin": "img"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    },
+    {
+      "name": "out",
+      "type": "base",
+      "cfg": {
+        "node": "output",
+        "name": "output"
+      },
+      "pos": {
+        "x": 287,
+        "y": -251
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "state_machine",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    },
+    {
+      "name": "interval",
+      "type": "base",
+      "cfg": {
+        "node": "output",
+        "name": "output"
+      },
+      "pos": {
+        "x": 285,
+        "y": -114
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "state_machine",
+          "pin": "interval"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    }
+  ]
+}
