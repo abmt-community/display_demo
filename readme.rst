@@ -85,7 +85,7 @@ Examples
 ========
 ::
     
-    $ echo '{"t": {"type": "text", "txt": "Hello World", "scale": 3, "fnt": "mcr"}}' | nc -q0 -u epd_demo.local 3333
+    echo '{"t": {"type": "text", "txt": "Hello World", "scale": 3, "fnt": "mcr"}}' | nc -q0 -u epd_demo.local 3333
 
 
 :: 
