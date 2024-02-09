@@ -85,19 +85,6 @@ Examples
 ========
 ``$ echo '{"t": {"type": "text", "txt": "Hello World", "scale": 3, "fnt": "mcr"}}' | nc -q0 -u epd_demo.local 3333``
 
-:: 
-    
- echo '{
-  "status": {"type": "text", "txt": "Hello World", "scale": 1, "p": 3, "fnt": "mcr"},
-  "bat": {"type": "icon", "name": "battery_charging", "al": "tr"},
-  "l1": {"type": "hline", "y": 16},
-  "main": { "type": "box", "y": "16%", "h": "84%", "w": "84%", "b": 0,
-    "text": {"type": "text", "txt": "HELLO", "al": "cc", "scale": 3, "fnt": "mcr"}
-  },
-  "btns": { "type": "box", "w": "16%", "h": "84%", "al": "br", "b": 0, 
-    "b1": { "type": "box", "w": "100%", "h": "33%", "al": "tl", "b": 1, "i": {"type": "icon", "name": "skip_next", "al": "cc"}},
-    "b2": { "type": "box", "w": "100%", "h": "33%", "al": "cl", "b": 1, "y": -1, "i": {"type": "icon", "name": "play", "al": "cc"}},
-    "b3": { "type": "box", "w": "100%", "h": "33%", "al": "bl", "b": 1, "y": -2,"i": {"type": "icon", "name": "skip_prev", "al": "cc"} }
-  }
- }' | nc -q0 -u epd_demo.local 3333
+::
+    I hate rest
 
