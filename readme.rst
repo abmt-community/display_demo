@@ -1,10 +1,14 @@
+============
+Display Demo
+============
+Example of how to use Displays with abmt.
 
-Make fonts
+Make Fonts
 ==========
 The script folder contains a modified version of the stm32 font generator (`stm32-font.py`) that creates a abmt compatible struct.
 https://www.fontriver.com/ is a good place to find fonts.
 
-Make onwn icons
+Make Onwn Icons
 ===============
 In the scripts folder is a script (`mk_icons.sh`) that may help you.
 - convert -dither None -density 1200 -resize ${SIZE}x${SIZE} icon.png icon.mono
@@ -12,7 +16,7 @@ In the scripts folder is a script (`mk_icons.sh`) that may help you.
 
 There are pre compiled iconoir icons in the script folder. 
 
-Included fonts
+Included Fonts
 ==============
 - http://viznut.fi/unscii/ [License Public Domain]
 
