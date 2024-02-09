@@ -8,10 +8,12 @@
 #include "iconoir_24.h"
 #include "iconoir_96.h"
 #include "asian_test_font.h"
-#include "FontRobotoMono24.h"
-#include "FontRobotoMono20.h"
-#include "FontRobotoMono16.h"
-#include "FontRobotoMono12.h"
+#include "font_unscii_8.h"
+#include "font_unscii_16.h"
+#include "font_unscii_24.h"
+#include "font_unscii_fantasy_8.h"
+#include "font_unscii_mcr_8.h"
+#include "font_unscii_thin_8.h"
 
 using namespace std;
 using namespace display_demo;
@@ -32,7 +34,7 @@ void display::draw_frame(){
     
     img.draw_icon(bat, width - 30, 1);
     
-    img.write_text(status_text, 3, 6, true, 1, FontRobotoMono16_font);
+    img.write_text(status_text, 3, 6, true, 2, font_unscii_mcr_8_font);
     
     img.draw_line(0, th, width, th, true, line_size);
     

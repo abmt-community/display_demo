@@ -102,8 +102,8 @@ def output_files(font, font_width, font_height, font_data, font_name, char_set):
     generated_time = time.strftime("%Y-%m-%d %H:%M:%S")
 
     # create filename, remove invalid chars
-    filename = f'Font{font_name}{font_height}'
-    filename = ''.join(c if c.isalnum() else '' for c in filename)
+    filename = f'font_{font_name}_{font_height}'
+    filename = ''.join(c if (c.isalnum() or c=='_') else '' for c in filename)
 
     # C file template
     output = f"""/**
@@ -179,6 +179,7 @@ if __name__ == '__main__':
     font_height = args.size
 
     myfont = ImageFont.truetype(font_type, size=font_height)
+    #myfont = ImageFont.load(font_type)
     font_width = get_max_width(myfont)
 
     if args.name:

@@ -14,7 +14,9 @@
       "use_usb": false,
       "usb_device_num": "0",
       "lto": true,
-      "skip": false
+      "skip": false,
+      "dou_mbed": "/opt/mbed-os-6.16",
+      "dou_toolchain": "/opt/gcc-arm-none-eabi-latest"
     },
     "mbed": {
       "target": "BLUE_PILL",
@@ -29,7 +31,9 @@
       "use_usb": false,
       "usb_device_num": "0",
       "lto": true,
-      "skip": false
+      "skip": false,
+      "dou_mbed": "/opt/mbed-os-6.16",
+      "dou_toolchain": "/opt/gcc-arm-none-eabi-latest"
     }
   }
 }

@@ -1,0 +1,98 @@
+{
+  "model_is_node": false,
+  "nodes": [
+    {
+      "name": "i2c",
+      "type": "class",
+      "cfg": {"class":"i2c","prj":"esp32_nodes","baudrate":"800000","pin_sda":"GPIO_NUM_3","pin_scl":"GPIO_NUM_4","pull_up":true},
+      "pos": {"x":-163,"y":-207},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "json_display",
+      "type": "class",
+      "cfg": {
+        "class": "json_display",
+        "prj": "display_demo",
+        "fonts": "display_demo::default_fonts",
+        "icons": "display_demo::default_icons",
+        "width": "128",
+        "height": "64"
+      },
+      "pos": {"x":-298,"y":-55},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"in":{"node":"state_machine","pin":"display"}},
+      "raster": "20ms",
+      "default_values": {"in":"{{\"t\", {{\"type\", \"text\"}, {\"txt\", \"test\"}}}}","fonts":"display_demo::default_fonts","icons":"display_demo::default_icons_24"}
+    },{
+      "name": "state_machine",
+      "type": "state_machine",
+      "cfg": {
+        "vars": "bool in_btn = false;\nabmt::json out_display;\nint i = 0;\nint icon_num = 0;\nstd::vector<std::string> icon_names;",
+        "includes": ["abmt/json.h","vector","ws/display_demo/nodes/json_display.h"],
+        "namespaces": ["std"],
+        "states": [
+          {
+            "pos": {"x":-893,"y":-230},
+            "rotate": false,
+            "comment_out": false,
+            "name": "init",
+            "init": "out_display = {\n    {\"line\",    {{\"type\", \"hline\"}, {\"y\", 13}} },\n    {\"status\",  {{\"type\", \"text\"}, {\"disp\", true}, {\"txt\", \"Status\"}, {\"fnt\", \"mcr\"}, {\"scale\", 1}, {\"al\", \"tl\"}, {\"p\", 3}} },\n    {\"bat\",     {{\"type\", \"icon\"}, {\"disp\", false}, {\"name\", \"battery_charging\"}, {\"al\", \"tr\"}, {\"y\", -2}} },\n    {\"ico\",     {{\"type\", \"icon\"}, {\"name\", \"emoji_blink_right\"}, {\"al\", \"cc\"}, {\"y\", 12}} },\n    {\"cnt\",     {{\"type\", \"text\"}, {\"txt\", \"0\"}, {\"fnt\", \"mcr\"}, {\"scale\", 2}, {\"al\", \"br\"}, {\"p\", 2}} },\n};\n\nfor(auto const& [key, val] : display_demo::default_icons){\n    icon_names.push_back(key);\n}",
+            "tick": "",
+            "final": "",
+            "transitions": [{"c":"true","t":"cnt"}]
+          },{
+            "pos": {"x":-509,"y":-28},
+            "rotate": true,
+            "comment_out": false,
+            "name": "btn_press",
+            "init": "icon_num++;\nif(icon_num >= icon_names.size()){\n    icon_num = 0;\n}\nout_display[\"ico\"][\"name\"]   = icon_names[icon_num];\nout_display[\"status\"][\"txt\"] = icon_names[icon_num];",
+            "tick": "out_display[\"cnt\"][\"txt\"] = to_string(i);\ni++;\nif(i >= 100){\n    i = 0;\n}",
+            "final": "",
+            "transitions": [{"c":"in_btn == false","t":"cnt"}]
+          },{
+            "pos": {"x":-508,"y":-225},
+            "rotate": false,
+            "comment_out": false,
+            "name": "cnt",
+            "init": "",
+            "tick": "out_display[\"cnt\"][\"txt\"] = to_string(i);\ni++;\nif(i >= 100){\n    i = 0;\n}",
+            "final": "",
+            "transitions": [{"c":"in_btn","t":"btn_press"}]
+          }
+        ]
+      },
+      "pos": {"x":-745,"y":-75},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"btn":{"node":"invert","pin":"out"}},
+      "default_values": {"btn":"false"}
+    },{
+      "name": "ssd1306",
+      "type": "class",
+      "cfg": {"class":"ssd1306","prj":"uc_devices","adr":"0x3c","contrast":"255","width":"128","height":"64","snd_one_page_per_tick":false},
+      "pos": {"x":145,"y":-127},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"i2c_bus":{"node":"i2c","pin":"i2c_bus"},"img":{"node":"json_display","pin":"out"}},
+      "default_values": {"i2c_bus":"","img":""}
+    },{
+      "name": "gpio_input",
+      "type": "class",
+      "cfg": {"class":"gpio_input","prj":"esp32_nodes","pin":"GPIO_NUM_9","pull_up":false,"disable_during_sleep":false},
+      "pos": {"x":-1237,"y":-76},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "invert",
+      "type": "expression",
+      "cfg": {"function":"!a","output_name":"out","output_type":"auto","type_header":"","disable_output":false},
+      "pos": {"x":-939,"y":-91},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"a":{"node":"gpio_input","pin":"out"}},
+      "default_values": {"a":""}
+    }
+  ]
+}

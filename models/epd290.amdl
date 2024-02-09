@@ -1,0 +1,100 @@
+{
+  "model_is_node": false,
+  "nodes": [
+    {
+      "name": "epd290",
+      "type": "class",
+      "cfg": {"class":"epd290","prj":"uc_devices","swap_endian":true,"invert_px":false},
+      "pos": {"x":-143,"y":103},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "img": {"node":"json_display","pin":"out"},
+        "spi": {"node":"spi","pin":"spi_bus"},
+        "cs": {"node":"opin","pin":"opin"},
+        "dc": {"node":"opin_1","pin":"opin"},
+        "reset": {"node":"opin_2","pin":"opin"},
+        "busy": {"node":"ipin","pin":"ipin"}
+      },
+      "default_values": {"img":"","spi":"","cs":"","dc":"","reset":"","busy":""}
+    },{
+      "name": "spi",
+      "type": "class",
+      "cfg": {
+        "class": "spi",
+        "prj": "esp32_nodes",
+        "host": "SPI2_HOST",
+        "pin_mosi": "GPIO_NUM_4",
+        "pin_miso": "GPIO_NUM_NC",
+        "pin_sck": "GPIO_NUM_3",
+        "baudrate": "1000000",
+        "mode": "0"
+      },
+      "pos": {"x":-734,"y":85},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "json_display",
+      "type": "class",
+      "cfg": {"class":"json_display","prj":"display_demo","width":"296","height":"128"},
+      "pos": {"x":-782,"y":-62},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"in":{"node":"parse_json","pin":"out"}},
+      "default_values": {"in":"{{\"t\", {{\"type\", \"text\"}, {\"txt\", \"test\"}}}}","fonts":"display_demo::default_fonts","icons":"display_demo::default_icons"}
+    },{
+      "name": "opin",
+      "type": "class",
+      "cfg": {"class":"opin","prj":"esp32_nodes","pin":"GPIO_NUM_2","disable_during_sleep":false},
+      "pos": {"x":-753,"y":196},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "opin_1",
+      "type": "class",
+      "cfg": {"class":"opin","prj":"esp32_nodes","pin":"GPIO_NUM_1","disable_during_sleep":false},
+      "pos": {"x":-789,"y":293},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "opin_2",
+      "type": "class",
+      "cfg": {"class":"opin","prj":"esp32_nodes","pin":"GPIO_NUM_0","disable_during_sleep":false},
+      "pos": {"x":-801,"y":402},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "ipin",
+      "type": "class",
+      "cfg": {"class":"ipin","prj":"esp32_nodes","pin":"GPIO_NUM_5","pull_up":false,"disable_during_sleep":false},
+      "pos": {"x":-750,"y":535},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "udp_rr",
+      "type": "class",
+      "cfg": {"class":"udp_rr","prj":"esp32_nodes","port":"3333","rx_buff_size":"4096"},
+      "pos": {"x":-1714,"y":-65},
+      "rotate": false,
+      "comment_out": false
+    },{
+      "name": "expression_1",
+      "type": "expression",
+      "cfg": {"function":"a->data.str()","output_name":"out","output_type":"auto","type_header":"","disable_output":false},
+      "pos": {"x":-1457,"y":-77},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"a":{"node":"udp_rr","pin":"rr"}},
+      "default_values": {"a":""}
+    },{
+      "name": "parse_json",
+      "type": "class",
+      "cfg": {"class":"parse_json","prj":"utils"},
+      "pos": {"x":-1118,"y":-64},
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {"in":{"node":"expression_1","pin":"out"}},
+      "default_values": {"in":""}
+    }
+  ]
+}

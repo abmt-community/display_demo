@@ -1,0 +1,35 @@
+{
+  "model": "json_display",
+  "runtime": "esp32",
+  "runtime_configs": {
+    "mbed": {
+      "target": "BLUE_PILL",
+      "flash_command": "st-flash --reset --flash=128k write _BIN_FILE_ 0x8000000",
+      "dou_mbed": "/opt/mbed-os-6.16",
+      "dou_toolchain": "/opt/gcc-arm",
+      "raster_stack_size": "2048",
+      "serial_port": "/dev/ttyACM0",
+      "serial_baudrate": "115200",
+      "serial_pin_tx": "CONSOLE_TX",
+      "serial_pin_rx": "CONSOLE_RX",
+      "use_usb": false,
+      "usb_device_num": "0",
+      "lto": false,
+      "skip": false
+    },
+    "esp32": {
+      "idf_path": "/opt/esp-idf",
+      "raster_stack_size": "2048",
+      "serial_port": "/dev/ttyACM0",
+      "serial_baudrate": "1000000",
+      "enable_wifi": false,
+      "mdns_name": "esp32",
+      "wifi_sleep": "1",
+      "wifi_interval": "1",
+      "sleep": false,
+      "multithreading": false,
+      "skip": false,
+      "sdkcfg": "c3"
+    }
+  }
+}

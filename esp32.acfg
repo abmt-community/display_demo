@@ -1,0 +1,18 @@
+{
+  "model": "esp32",
+  "runtime": "esp32",
+  "runtime_configs": {
+    "esp32": {
+      "idf_path": "/opt/esp-idf",
+      "sdkcfg": "c3",
+      "serial_port": "/dev/ttyACM0",
+      "enable_wifi": false,
+      "wifi_cfg_h": "./wifi_cfg.h",
+      "mdns_name": "esp_disp",
+      "wifi_sleep": "1",
+      "wifi_interval": "100",
+      "sleep": false,
+      "skip": false
+    }
+  }
+}
