@@ -84,9 +84,11 @@ vline
 Examples
 ========
 ::
+    
     $ echo '{"t": {"type": "text", "txt": "Hello World", "scale": 3, "fnt": "mcr"}}' | nc -q0 -u epd_demo.local 3333
 
-::   
+:: 
+
     echo '{
         "status": {"type": "text", "txt": "Hello World", "scale": 1, "p": 3, "fnt": "mcr"},
         "bat": {"type": "icon", "name": "battery_charging", "al": "tr"},
