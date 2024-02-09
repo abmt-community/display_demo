@@ -85,7 +85,8 @@ Examples
 ========
 ``$ echo '{"t": {"type": "text", "txt": "Hello World", "scale": 3, "fnt": "mcr"}}' | nc -q0 -u epd_demo.local 3333``
 
-``$ echo '{
+.. code-block:: rst
+$ echo '{
   "status": {"type": "text", "txt": "Hello World", "scale": 1, "p": 3, "fnt": "mcr"},
   "bat": {"type": "icon", "name": "battery_charging", "al": "tr"},
   "l1": {"type": "hline", "y": 16},
@@ -97,4 +98,5 @@ Examples
     "b2": { "type": "box", "w": "100%", "h": "33%", "al": "cl", "b": 1, "y": -1, "i": {"type": "icon", "name": "play", "al": "cc"}},
     "b3": { "type": "box", "w": "100%", "h": "33%", "al": "bl", "b": 1, "y": -2,"i": {"type": "icon", "name": "skip_prev", "al": "cc"} }
   }
-}' | nc -q0 -u epd_demo.local 3333``
+}' | nc -q0 -u epd_demo.local 3333
+
