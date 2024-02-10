@@ -107,3 +107,7 @@ Examples
         "b3": { "type": "box", "w": "100%", "h": "33%", "al": "bl", "b": 1, "y": -2,"i": {"type": "icon", "name": "skip_prev", "al": "cc"} }
     }}' | nc -q0 -u epd_demo.local 3333
 
+
+Creates the following image: 
+
+   .. image:: hello.png
