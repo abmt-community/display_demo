@@ -2,8 +2,7 @@
 Display Demo
 ============
 Example of how to use Displays with abmt. The display driver nodes used in the examples are located here:
-
-``https://github.com/abmt-community/uc_devices``
+https://github.com/abmt-community/uc_devices
 
 Make Fonts
 ==========
