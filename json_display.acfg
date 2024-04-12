@@ -1,5 +1,5 @@
 {
-  "model": "json_display",
+  "model": "esp32",
   "runtime": "esp32",
   "runtime_configs": {
     "mbed": {
@@ -29,7 +29,9 @@
       "sleep": false,
       "multithreading": false,
       "skip": false,
-      "sdkcfg": "c3"
+      "sdkcfg": "c3",
+      "serial_device": "0",
+      "wifi_cfg_h": "./wifi_cfg.h"
     }
   }
 }

@@ -256,10 +256,8 @@ void json_display::display_text(abmt::json& j, img_area bx){
     string text = o.txt;
     vector<string> lines;
     size_t end_of_line = 0;
-    string line;
-    while((end_of_line = o.txt.find('\n')) != string::npos){
-        line = text.substr(0, end_of_line);
-        lines.push_back(line);
+    while((end_of_line = text.find('\n')) != string::npos){
+        lines.push_back(text.substr(0, end_of_line));
         text.erase(0, end_of_line + 1);
     }
     lines.push_back(text); // rest

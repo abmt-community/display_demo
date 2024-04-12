@@ -19,11 +19,11 @@
         "width": "128",
         "height": "64"
       },
-      "pos": {"x":-298,"y":-55},
+      "pos": {"x":-324,"y":-61},
       "rotate": false,
       "comment_out": false,
       "inputs": {"in":{"node":"state_machine","pin":"display"}},
-      "raster": "20ms",
+      "raster": "33ms",
       "default_values": {"in":"{{\"t\", {{\"type\", \"text\"}, {\"txt\", \"test\"}}}}","fonts":"display_demo::default_fonts","icons":"display_demo::default_icons_24"}
     },{
       "name": "state_machine",

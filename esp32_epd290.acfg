@@ -10,9 +10,10 @@
       "wifi_cfg_h": "./wifi_cfg.h",
       "mdns_name": "epd_demo",
       "wifi_sleep": "1",
-      "wifi_interval": "1000",
-      "sleep": true,
-      "skip": false
+      "wifi_interval": "200",
+      "sleep": false,
+      "skip": false,
+      "serial_device": "0"
     }
   }
 }
