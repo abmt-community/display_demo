@@ -40,8 +40,11 @@ extern std::map<std::string, icon> default_icons_24;
 struct json_display{
     abmt::json in = { {"t", {{"type", "text"}, {"txt", "test"}} } };
     abmt::img_bw out;
+    bool out_updated = true;
     std::map<std::string, const abmt::font*> in_fonts = display_demo::default_fonts;
     std::map<std::string, icon> in_icons = display_demo::default_icons;
+    
+    abmt::json last_displayd;
     
     int param_width  = 320;
     int param_height = 240;

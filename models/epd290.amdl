@@ -10,13 +10,14 @@
       "comment_out": false,
       "inputs": {
         "img": {"node":"json_display","pin":"out"},
+        "update": {"node":"json_display","pin":"updated"},
         "spi": {"node":"spi","pin":"spi_bus"},
         "cs": {"node":"opin","pin":"opin"},
         "dc": {"node":"opin_1","pin":"opin"},
         "reset": {"node":"opin_2","pin":"opin"},
         "busy": {"node":"ipin","pin":"ipin"}
       },
-      "default_values": {"img":"","spi":"","cs":"","dc":"","reset":"","busy":""}
+      "default_values": {"img":"","update":"true","spi":"","cs":"","dc":"","reset":"","busy":""}
     },{
       "name": "spi",
       "type": "class",

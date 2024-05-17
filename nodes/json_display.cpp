@@ -222,14 +222,14 @@ void json_display::display_icon(abmt::json& j, img_area bx){
     }
     
     if( found ){
-        o.align(i.w + o.b_width*2, i.h + o.b_width*2);
+        o.align(i.w*o.scale + o.b_width*2, i.h*o.scale + o.b_width*2);
         draw_bdr({ bx.x + o.x + o.m, 
                           bx.y + o.y + o.m, 
-                          i.w + (o.b + o.p)*2, 
-                          i.h + (o.b + o.p)*2
+                          i.w*o.scale + (o.b + o.p)*2, 
+                          i.h*o.scale + (o.b + o.p)*2
                  }, o.b, o.r);
         abmt::img_bw icon_to_draw(i.w, i.h, i.ptr);
-        out.draw_icon(icon_to_draw,  bx.x + o.x + o.b_width, bx.y + o.y + o.b_width, true);
+        out.draw_icon(icon_to_draw,  bx.x + o.x + o.b_width, bx.y + o.y + o.b_width, true, o.scale);
     }else{
         o.align(abmt::default_font.width + o.b_width*2, abmt::default_font.height + o.b_width*2);
         out.write_text("X", bx.x + o.x, bx.y + o.y, true, 2);
@@ -310,8 +310,13 @@ void json_display::tick(){
     if(in.is_object() == false){
         return;
     }
-    // create new image / shared pointer
-    out = abmt::img_bw(param_width, param_height);
+    if(in == last_displayd){
+        out_updated = false;
+        return;
+    }
+    out_updated = true;
+    last_displayd = in;
+    out = abmt::img_bw(param_width, param_height);  // create new image / shared pointer
     out.fill(false);
     display_array(in,root_box);
 }

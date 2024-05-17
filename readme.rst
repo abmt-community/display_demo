@@ -64,6 +64,7 @@ icon
 - r: <4|6|8>; default 0; [border radius]
 - al: "<tl|tc|tr|cl|cc|cr|bl|bc|br>"; default tl; [align]
 - disp: <true|false>; default: true; [display]
+- scale: <val>; default 1;
 
 line
 ----
