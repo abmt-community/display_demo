@@ -26,6 +26,7 @@ JSON Display Elements
 ======================
 box
 ---
+- type: "box"
 - x: <val | "val %">; default: 0
 - y: <val | "val %">; default: 0
 - w: <val | "val %">; default: 1 [width]
@@ -40,6 +41,7 @@ box
 
 text
 ----
+- type: "text"
 - txt: <text>
 - fnt: <val>: default "default"; "default" == first font in list
 - scale: <val>; default 1;
@@ -55,6 +57,7 @@ text
 
 icon
 ----
+- type: "icon"
 - name: <img_name> | "" -> no image
 - x: <val | "val %">; default: 0
 - y: <val | "val %">; default: 0
@@ -68,6 +71,7 @@ icon
 
 line
 ----
+- type: "line"
 - x1: <val | "val %">; default: 0
 - y1: <val | "val %">; default: 0
 - x2: <val | "val %">; default: 0
@@ -77,12 +81,14 @@ line
 
 hline
 -----
+- type: "hline"
 - y: <val | "val %">; default: 0
 - w: <val>; default 1;
 - disp: <true|false>; default: true; [display]
 
 vline
 -----
+- type: "vline"
 - x: <val | "val %">; default: 0
 - w: <val>; default: 1
 - disp: <true|false>; default: true; [display]
@@ -101,13 +107,13 @@ Examples
         "bat": {"type": "icon", "name": "battery_charging", "al": "tr"},
         "l1": {"type": "hline", "y": 16},
         "main": { "type": "box", "y": "16%", "h": "84%", "w": "84%", "b": 0,
-        "text": {"type": "text", "txt": "HELLO", "al": "cc", "scale": 3, "fnt": "mcr"}
-    },
-    "btns": { "type": "box", "w": "16%", "h": "84%", "al": "br", "b": 0, 
-        "b1": { "type": "box", "w": "100%", "h": "33%", "al": "tl", "b": 1, "i": {"type": "icon", "name": "skip_next", "al": "cc"}},
-        "b2": { "type": "box", "w": "100%", "h": "33%", "al": "cl", "b": 1, "y": -1, "i": {"type": "icon", "name": "play", "al": "cc"}},
-        "b3": { "type": "box", "w": "100%", "h": "33%", "al": "bl", "b": 1, "y": -2,"i": {"type": "icon", "name": "skip_prev", "al": "cc"} }
-    }}' | nc -q0 -u epd_demo.local 3333
+                  "text": {"type": "text", "txt": "HELLO", "al": "cc", "scale": 3, "fnt": "mcr"}
+        },
+        "btns": { "type": "box", "w": "16%", "h": "84%", "al": "br", "b": 0, 
+                  "b1": { "type": "box", "w": "100%", "h": "33%", "al": "tl", "b": 1, "i": {"type": "icon", "name": "skip_next", "al": "cc"}},
+                  "b2": { "type": "box", "w": "100%", "h": "33%", "al": "cl", "b": 1, "y": -1, "i": {"type": "icon", "name": "play", "al": "cc"}},
+                  "b3": { "type": "box", "w": "100%", "h": "33%", "al": "bl", "b": 1, "y": -2,"i": {"type": "icon", "name": "skip_prev", "al": "cc"} }
+        }}' | nc -q0 -u epd_demo.local 3333
 
 
 Creates the following image: 
