@@ -308,7 +308,7 @@ void json_display::display_vline(abmt::json& j, img_area bx){
 
 void json_display::tick(){
     if(in.is_object() == false){
-        return;
+        in = { {"t", {{"type", "text"}, {"txt", in.str()} } } };
     }
     if(in == last_displayd){
         out_updated = false;

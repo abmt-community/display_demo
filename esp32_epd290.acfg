@@ -9,11 +9,12 @@
       "enable_wifi": true,
       "wifi_cfg_h": "./wifi_cfg.h",
       "mdns_name": "epd_demo",
-      "wifi_sleep": "1",
+      "wifi_sleep": "0",
       "wifi_interval": "200",
       "sleep": false,
       "skip": false,
-      "serial_device": "0"
+      "serial_device": "0",
+      "heavy_lifting": true
     }
   }
 }

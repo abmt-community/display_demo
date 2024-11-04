@@ -4,7 +4,7 @@
     {
       "name": "i2c",
       "type": "class",
-      "cfg": {"class":"i2c","prj":"esp32_nodes","baudrate":"800000","pin_sda":"GPIO_NUM_3","pin_scl":"GPIO_NUM_4","pull_up":true},
+      "cfg": {"class":"i2c","prj":"esp32_nodes","baudrate":"400000","pin_sda":"GPIO_NUM_3","pin_scl":"GPIO_NUM_4","pull_up":true},
       "pos": {"x":-163,"y":-207},
       "rotate": false,
       "comment_out": false
