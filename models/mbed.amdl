@@ -16,8 +16,7 @@
       "pos": {"x":250,"y":-248},
       "rotate": false,
       "comment_out": false,
-      "inputs": {"in":{"node":"counter","pin":"out"}},
-      "default_values": {"in":""}
+      "inputs": {"in":{"node":"counter","pin":"out"}}
     },{
       "name": "spi",
       "type": "class",
@@ -69,8 +68,7 @@
       "pos": {"x":-1486,"y":525},
       "rotate": false,
       "comment_out": false,
-      "raster": "100ms",
-      "default_values": {"in":"true"}
+      "raster": "100ms"
     },{
       "name": "btn2",
       "type": "class",
